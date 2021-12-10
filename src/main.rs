@@ -2,6 +2,9 @@
 mod math;
 
 fn main() {
+
+    // print::run() - Hello World!
+
     let x = math::add(2, 2);
     let y = math::subtract(10, 6);
     let z = math::multiply(2, 2);
