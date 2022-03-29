@@ -28,9 +28,8 @@ fn main() {
     let one = x.2;
 
     
+    // ARRAYS
     let a = [1, 2, 3, 4, 5];
-
-
     let months = ["January", "February", "March", "April", "May", "June", "July",
                   "August", "September", "October", "November", "December"];
     
@@ -38,5 +37,6 @@ fn main() {
     let a: [i32; 5] = [1, 2, 3, 4, 5]; // Love this!
     let a = [3; 5]; // 3 3 3 3 3
 
+    // Accessing array contents works the same as in other languages
     println!("{}", a[4]); // 3            
 }
