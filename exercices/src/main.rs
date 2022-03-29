@@ -1,36 +1,41 @@
 use std::io; 
 
 fn main() {
+    // Buffers
     let mut input = String::new(); 
     let mut num = String::new();  
-    let mut res: f64 = 0.0;
+    let mut res: f64 = -1.0; // By default: error
+
 
     println!("Convert from Fahrenheit or Celcius (c, f)");
 
+    
     // Read c or f
     io::stdin()
         .read_line(&mut input)
         .expect("Failed to read line"); 
     
-    let input = input.trim();  
-    println!("Enter a number: ");
-
+    let input = input.trim();  // Strings have white space apparently
+    
+    println!("Enter {}: ", input);
+    
     // Read number
     io::stdin()
         .read_line(&mut num)
         .expect("Failed to read line");    
     
-    let num = match num.trim().parse() {
+    // Convert user input (num) to int    
+    let num: f64 = match num.trim().parse() {
         Ok(num) => num,
-        Err(_) => -1,
+        Err(_) => -1.0,
     };
 
     if input == "c" { 
-        println!("Enter cel: ");
-        res = celcius_to_fahrenheit(num as f64)
+        res = celcius_to_fahrenheit(num)
     } else if input == "f" {
-        println!("Enter fah: ");
-        res = fahrenheit_to_celcius(num as f64)
+        res = fahrenheit_to_celcius(num)
+    } else {
+        println!("Did not recognize input"); 
     }
 
     println!("{}", res); 
@@ -44,4 +49,3 @@ fn fahrenheit_to_celcius(fah: f64) -> f64 {
 fn celcius_to_fahrenheit(cel: f64) -> f64 {
     (cel * 1.8) + 32 as f64 
 }
-
