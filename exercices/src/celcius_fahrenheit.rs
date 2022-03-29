@@ -1,14 +1,13 @@
 use std::io; 
 
 fn main() {
+
     // Buffers
     let mut input = String::new(); 
     let mut num = String::new();  
     let mut res: f64 = -1.0; // By default: error
 
-
     println!("Convert from Fahrenheit or Celcius (c, f)");
-
     
     // Read c or f
     io::stdin()
@@ -17,7 +16,7 @@ fn main() {
     
     let input = input.trim();  // Strings have white space apparently
     
-    println!("Enter {}: ", input);
+    println!("Enter °{}: ", input.to_uppercase());
     
     // Read number
     io::stdin()
@@ -31,14 +30,14 @@ fn main() {
     };
 
     if input == "c" { 
-        res = celcius_to_fahrenheit(num)
+        let res = celcius_to_fahrenheit(num);
+        println!("{}°F", res); 
     } else if input == "f" {
-        res = fahrenheit_to_celcius(num)
+        let res = fahrenheit_to_celcius(num);
+        println!("{}°C", res); 
     } else {
         println!("Did not recognize input"); 
     }
-
-    println!("{}", res); 
 }
 
 
