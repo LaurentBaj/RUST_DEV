@@ -1,5 +1,4 @@
 fn main() {
- 
     let verses = [
         "A partridge in a pear tree",
         "Two turtle doves, and",
@@ -19,7 +18,6 @@ fn main() {
         "first", "second", "third", "fourth", "fifth", "sixth", 
         "seventh","eighth", "ninth", "tenth", "eleventh", "twelfth"
     ];
-
 
     for i in 0..days.len() {
         println!("\nOn the {} day of christmas my true love sent to me:", days[i]);
