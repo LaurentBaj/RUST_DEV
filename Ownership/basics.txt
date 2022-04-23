@@ -1,0 +1,14 @@
+RUST does not have a garbage collection, so it needs to handle memory manually.
+It does so using a concept called Ownership, which applies to how RUST utilizes
+memory from the Stack and the Heap.
+
+Tenets of borrowing: 
+    1) A value in RUST has always one variable called its owner
+    2) There can only be one owner at a time
+    3) A variable is dropped when it goes out of scope
+
+
+Tenets of referencing:
+    1) At any given time, you can EITHER have one mutable refernece,
+       or multiple immutable references
+    2) References mut always be valid (see dangling_ref.rs)
