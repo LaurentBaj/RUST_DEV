@@ -2,18 +2,19 @@ use std::io;
 
 fn main() {
     println!("CREATE A NEW USER");
-    println!("Enter username: ");
-    let username = save_field(); 
+    
+    let username = save_field("username".to_string()); 
+    let password = save_field("password".to_string()); 
+    compare(&password);
 
-    println!("Enter new password: ");
-    let password = save_field(); 
-
-    println!("User[ {} -- password: {} -- valid: {}]", 
-        username, password, compare(&password));
+    println!("User created [ {} -- password: {}", 
+        username, password);
 }
 
 
-fn save_field() -> String {
+fn save_field(text: String) -> String {
+    println!("Enter new {}: ", text);
+
     let mut input = String::new();
     io::stdin()
         .read_line(&mut input)
@@ -22,18 +23,22 @@ fn save_field() -> String {
     // input.trim(); -- This turns str into a pointer so we need to toString it
 }
 
-fn compare(prev: &String) -> bool {
-    println!("Confirm password");
-    let mut new = String::new();
-    io::stdin()
-        .read_line(&mut new)
-        .expect("Failed to read line");
-    let new = new.trim().to_string();
 
-    if prev.to_string() == new {
-        true
-    } else {
-        false
+fn compare(prev: &String) {
+    println!("Confirm password");
+
+    loop {
+        let mut comp_password = String::new();
+        io::stdin()
+            .read_line(&mut comp_password)
+            .expect("Failed to read line");
+        let comp_password = comp_password.trim().to_string();
+
+        if prev.to_string() == comp_password {
+            break;
+        } else {
+            println!("Passwords did not match. Try again: "); 
+        }
     }
 }
 
