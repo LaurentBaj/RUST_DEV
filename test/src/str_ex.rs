@@ -7,7 +7,7 @@ fn main() {
     let password = save_field("password".to_string()); 
     compare(&password);
 
-    println!("User created [ {} -- password: {}", 
+    println!("User created [ {} -- password: {} ]", 
         username, password);
 }
 
