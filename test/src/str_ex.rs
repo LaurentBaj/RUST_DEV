@@ -3,36 +3,30 @@ use std::io;
 fn main() {
     println!("CREATE A NEW USER");
     
-    let username = save_field("username".to_string()); 
-    let password = save_field("password".to_string()); 
-    compare(&password);
+    let username = create_username(); 
+    let password = create_password(); 
 
     println!("User created [ {} -- password: {} ]", 
         username, password);
 }
 
-
-fn save_field(text: String) -> String {
-    println!("Enter new {}: ", text);
-
-    let mut input = String::new();
-    io::stdin()
-        .read_line(&mut input)
-        .expect("Failed to read line");
-    input.trim().to_string()
-    // input.trim(); -- This turns str into a pointer so we need to toString it
+fn create_username() -> String {
+    println!("Enter new username: ");
+    user_input()
 }
 
+fn create_password() -> String {
+    println!("Enter new password: ");
+    let input = user_input();
+    compare(&input);
+    input
+}
 
 fn compare(prev: &String) {
     println!("Confirm password");
 
     loop {
-        let mut comp_password = String::new();
-        io::stdin()
-            .read_line(&mut comp_password)
-            .expect("Failed to read line");
-        let comp_password = comp_password.trim().to_string();
+        let comp_password = user_input();
 
         if prev.to_string() == comp_password {
             break;
@@ -41,4 +35,16 @@ fn compare(prev: &String) {
         }
     }
 }
+
+fn user_input() -> String {
+    let mut input = String::new();
+    io::stdin()
+        .read_line(&mut input)
+        .expect("Input could not be read");
+    input.trim().to_string()   
+}
+
+// input.trim(); -- This turns str into a pointer so we need to toString it
+
+
 
