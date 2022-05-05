@@ -29,6 +29,7 @@ fn main() {
         username: String::from("PederAm"),
         ..user1
     };
+
     println!("\n{}", user2.username);
     println!("{}", user2.email);
     println!("{}", user2.active);
@@ -40,5 +41,17 @@ fn main() {
     
     // println!("{}", user1.email); - error
 
+    let user3 = build_user("laurent@mail.com", "LaurentBaj");
+}
+
+// Notice how we don't need the keys-value pair for fields
+// that are injected by params
+fn build_user(email: String, username: String) -> User {
+    User {
+        email,
+        username,
+        active: true,
+        sign_in_count: 1,
+    }
 }
 
