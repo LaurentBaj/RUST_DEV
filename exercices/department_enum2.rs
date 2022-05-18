@@ -9,12 +9,7 @@ enum Department {
 
 use std::collections::HashMap;
 fn main() {
-    let mut v = Vec::new();
-    v.push(add_entry());
-    v.push(add_entry());
-    v.push(add_entry());
-
-    println!("{:?}", v);
+    program();
 }
 
 fn add_entry() -> HashMap<String, Department> {
@@ -48,6 +43,23 @@ fn enter_dep(str: &str) -> Department {
     } 
 }
 
-/* fn add_to_list(list: &mut Vec<HashMap<String, Department>>) {
+fn add_emp(list: &mut Vec<HashMap<String, Department>>) {
     list.push(add_entry());
-} */
+    println!("\n");
+}
+
+fn program() {
+    let mut v = Vec::new();
+
+    loop {
+        println!("Add new employee (y, n)");
+        let input = user_input();
+
+        if input.as_str() == "y" {
+            add_emp(&mut v);
+        } else {
+            println!("{:?}", v);
+            break;
+        }
+    }
+}
