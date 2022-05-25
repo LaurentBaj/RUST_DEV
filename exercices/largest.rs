@@ -17,6 +17,9 @@ fn main() {
             largest_i32_struct(&array).index,
             largest_i32_struct(&array).value
     );
+
+    // Rustlang version -> get largest value
+    println!("\nLargest value: {}\n", largest_value(&array));
 }
 
 fn largest_i32_tuple(slice: &[i32]) -> (i32, i32) {
@@ -42,3 +45,27 @@ fn largest_i32_struct(slice: &[i32]) -> Largest {
 
     Largest { index: largest as i32, value: slice[largest] }
 }
+
+fn largest_value(slice: &[i32]) -> i32 {
+    let mut largest = slice[0];
+
+    for &item in slice {
+        if item > largest {
+            largest = item;
+        }
+    }
+
+    largest
+}
+
+/* Output: 
+    
+    Largest index: 4, value: 400
+
+
+    Largest index: 4, value: 400
+
+
+    Largest value: 400
+
+*/
