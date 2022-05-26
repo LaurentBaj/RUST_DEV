@@ -8,6 +8,8 @@ impl<T> Location<T> {
     fn new(latitude: T, longitude: T) -> Location<T> {
         Location { latitude, longitude }
     }
+
+    fn latitude(&self) -> &T { &self.latitude }
 }
 
 fn main() {
@@ -15,7 +17,9 @@ fn main() {
     let p2 = Location::new("Laurent", "Jon Olav");
 
     println!("{:?}", p1);
+
     println!("{:?}", p2);
+    println!("{:?}", p2.latitude()); // "Laurent"
 }
 
 
