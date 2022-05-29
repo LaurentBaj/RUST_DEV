@@ -1,3 +1,5 @@
+use std::cmp::PartialOrd;
+
 struct Largest {
     index: i32,
     value: i32
@@ -20,6 +22,8 @@ fn main() {
 
     // Rustlang version -> get largest value
     println!("\nLargest value: {}\n", largest_value(&array));
+
+    println!("\nLargest value: {}\n", generic_version(&array));
 }
 
 fn largest_i32_tuple(slice: &[i32]) -> (i32, i32) {
@@ -58,6 +62,20 @@ fn largest_value(slice: &[i32]) -> i32 {
     largest
 }
 
+// PartialOrd -> To compare generic values
+// Copy -> since we can only compare primitive types (ensures Integers, chars, so on..)
+fn generic_version<T: PartialOrd + Copy>(slice: &[T]) -> T {
+    let mut largest = slice[0];
+
+    for &item in slice {
+        if item > largest {
+            largest = item;
+        }
+    }
+
+    largest
+}
+
 /* Output: 
     
     Largest index: 4, value: 400
@@ -68,4 +86,6 @@ fn largest_value(slice: &[i32]) -> i32 {
 
     Largest value: 400
 
+    Largest value: 400
+    
 */
