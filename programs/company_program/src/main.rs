@@ -23,10 +23,10 @@ impl<T: Debug> Employee<T> {
         Employee { name }
     }
     
-    fn print_emp(&self) -> String {
+    fn print_emp(&self) {
         match &self.name {
-            Some(name) => format!("Emplyee name: {:?}", name),
-            None => format!("Error printing employee")
+            Some(name) => println!("Employee name: {:?}", name),
+            None => println!("Error printing employee name")
         }
     }
 }
@@ -35,7 +35,7 @@ impl<T: Debug> Employee<T> {
 fn main() {
     println!("Enter employee name");
     let emp = Employee::new_employee(Some(read()));
-    println!("{}", emp.print_emp());
+    emp.print_emp(); // Emplyee name: "Karoline"
 }
 
 
