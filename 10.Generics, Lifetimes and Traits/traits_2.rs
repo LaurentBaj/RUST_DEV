@@ -52,9 +52,24 @@ fn main() {
 
     print_summary(&magazine); 
     // Magazine [title: Nuts and Bolts, published: 2020]
+
+    let b2 = return_book();
+    b2.summarize();
+    // Book [author: Fyodor Dostoviesky, title: The Idiot, published: 1870]
 }
 
 // We can create a function that only works on all types that impl Summary
 fn print_summary(litterature: &impl Summary) {
     litterature.summarize();
+}
+
+// We can return a type that implements Summary
+// However, we can only return one type. We cannot use
+// an if else || match block to return a type based on a condition
+fn return_book() -> impl Summary {
+    Book {
+        title: String::from("The Idiot"),
+        author: String::from("Fyodor Dostoviesky"),
+        release_date: 1870
+    }
 }
