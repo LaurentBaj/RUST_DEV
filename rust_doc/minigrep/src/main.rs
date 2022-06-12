@@ -1,28 +1,22 @@
-use std::fs;
 use std::env;
+use std::process;
 
-// cargo run the poem.txt
+use minigrep::Config;
+
 fn main() {
     let args: Vec<String> = env::args().collect();
 
-    let content = Config::new(&args).filename;
-    let outputs = fs::read_to_string(content.as_str())
-        .expect("Could not read poem.txt");
+    let config = Config::new(&args).unwrap_or_else(|err| {
+        println!("Problem parsing arguments: {}", err);
+        process::exit(1);
+    });
 
-    println!("With text:\n{}
-    ", outputs);
-}
+    println!("Searching for {}", config.query);
+    println!("In file {}", config.filename);
 
-struct Config {
-    query: String,
-    filename: String
-}
+    if let Err(e) = minigrep::run(config) {
+        println!("Application error: {}", e);
 
-impl Config {
-    fn new(args: &[String]) -> Config {
-        let query = args[1].clone();
-        let filename = args[2].clone();
-    
-        Config { query, filename }
+        process::exit(1);
     }
 }
