@@ -1,4 +1,5 @@
 // Attempt at creating a quadratic equation for polynomial functions
+
 // Program does not take complex numbers into consideration
 // BUG: Declaring 'c' as something different than zero results in NaN for x1 and x2
 
