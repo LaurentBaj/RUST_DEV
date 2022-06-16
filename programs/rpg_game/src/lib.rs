@@ -21,7 +21,6 @@ impl Class {
     }
 }
 
-
 pub trait Entity {
     fn speech(&self) -> String;
 }
@@ -73,11 +72,11 @@ impl Player {
 impl Player {
     fn inflict_damage(&self, enemy: &mut Enemy, damage: u8) {
 
-        // If player damage is greater than enemy health
+        // If player damage is greater than enemy health - empty bar 
         if damage > enemy.health {
             enemy.health = 0;
         } else {
-            enemy.health = enemy.health - damage;
+            enemy.health = enemy.health - damage; // Reduce enemy hp
         }
     }
 }
@@ -180,13 +179,27 @@ mod tests {
     }
 
     #[test]
-    fn enemy_health_reduciton() -> Result<(), String> {
+    fn enemy_health_reduction() -> Result<(), String> {
         let p1 = Player::new("James", "Mage");
         let mut e1 = Enemy::new("Dragon");
         
         p1.inflict_damage(&mut e1, 40);
 
         if let 60 = e1.health {
+            Ok(())
+        } else {
+            Err(String::from("Damage was not registered"))
+        }
+    }
+
+    #[test]
+    fn enemy_health_reduction2() -> Result<(), String> {
+        let p1 = Player::new("James", "Mage");
+        let mut e1 = Enemy::new("Dragon");
+        
+        p1.inflict_damage(&mut e1, 112);
+
+        if let 0 = e1.health {
             Ok(())
         } else {
             Err(String::from("Damage was not registered"))
