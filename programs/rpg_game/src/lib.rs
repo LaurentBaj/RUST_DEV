@@ -1,3 +1,5 @@
+// Class- and EType enum + Entity trait
+
 #[derive(Debug, PartialEq)]
 pub enum Class {
     Mage,
@@ -53,11 +55,12 @@ impl EType {
     }
 }
 
+// Player and Enemy structs + their functions
 
 #[derive(Debug, PartialEq)]
 pub struct Player {
-    name: String,
-    class: Class
+    pub name: String,
+    pub class: Class
 }
 
 impl Player {
@@ -70,7 +73,7 @@ impl Player {
 }
 
 impl Player {
-    fn inflict_damage(&self, enemy: &mut Enemy, damage: u8) {
+    pub fn inflict_damage(&self, enemy: &mut Enemy, damage: u8) {
 
         // If player damage is greater than enemy health - empty bar 
         if damage > enemy.health {
@@ -91,12 +94,12 @@ impl Entity for Player {
 
 #[derive(Debug, PartialEq)]
 pub struct Enemy {
-    etype: EType,
-    health: u8
+    pub etype: EType,
+    pub health: u8
 }
 
 impl Enemy {
-    fn new(input: &str) -> Enemy {
+    pub fn new(input: &str) -> Enemy {
         Enemy {
             etype: EType::add_etype(input),
             health: 100
@@ -114,7 +117,8 @@ impl Entity for Enemy {
 
 
 
-// TESTS
+// --  TESTS -- 
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -175,34 +179,6 @@ mod tests {
             Ok(())
         } else {
             Err(String::from("Error creating enemy"))
-        }
-    }
-
-    #[test]
-    fn enemy_health_reduction() -> Result<(), String> {
-        let p1 = Player::new("James", "Mage");
-        let mut e1 = Enemy::new("Dragon");
-        
-        p1.inflict_damage(&mut e1, 40);
-
-        if let 60 = e1.health {
-            Ok(())
-        } else {
-            Err(String::from("Damage was not registered"))
-        }
-    }
-
-    #[test]
-    fn enemy_health_reduction2() -> Result<(), String> {
-        let p1 = Player::new("James", "Mage");
-        let mut e1 = Enemy::new("Dragon");
-        
-        p1.inflict_damage(&mut e1, 112);
-
-        if let 0 = e1.health {
-            Ok(())
-        } else {
-            Err(String::from("Damage was not registered"))
         }
     }
 }
