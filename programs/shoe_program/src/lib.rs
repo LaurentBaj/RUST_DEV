@@ -20,7 +20,6 @@ fn shoes_that_fit_me(shoes: Vec<Shoe>, shoe_size: u8) -> Vec<Shoe> {
 }
 
 
-
 #[cfg(test)]
 mod tests {
     use super::*;
