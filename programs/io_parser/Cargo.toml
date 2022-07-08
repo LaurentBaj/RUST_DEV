@@ -1,6 +1,6 @@
 [package]
-name = "io_reader"
-version = "0.1.3"
+name = "io_parser"
+version = "0.1.4"
 edition = "2021"
 license = "MIT"
 description = "Crate that parses IO-reads"
