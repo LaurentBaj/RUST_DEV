@@ -1,16 +1,22 @@
-/// IO-PARSER
-///
-/// As a a beginner it can be daunting to rewrite functions that parses inputs from the terminal.
-///
-/// This is typical as a beginner, since you're using the '''std::io''' library when working with inputs
-///
-/// This library will parse user inputs, trim them and then return a String
-
+//! # IO_PARSER
+//!
+//!
+//! Parsing input from the `std::io` can be verbose. As beginners we do this all the time! This crate aims to simplify this process so that you can speed up the process of creating your own cli-applications.
 
 mod io_fn {
-    pub mod read_input {
+    /// Parses user input and then returns a String
+    pub mod ru {
         use std::io;
 
+        /// Parse user input, trims it and then returns it as a String
+        ///
+        /// # Example
+        ///
+        /// ```
+        /// let input = user_input();
+        /// println!("{}", a); // Your input from the terminal
+        ///
+        /// ```
         #[allow(dead_code)]
         pub fn user_input() -> String {
             let mut input: String = String::new();
@@ -21,8 +27,9 @@ mod io_fn {
         }
     }
 
-    pub mod numerize {
-        use crate::read_input::user_input;
+    /// The num module parses the user input into an integer or a float
+    pub mod num {
+        use crate::ru::user_input;
 
         #[allow(dead_code)]
         fn parse_to_num(input: String) -> i32 {
@@ -40,22 +47,42 @@ mod io_fn {
             }
         }
 
+        /// Parse user input to a i32
+        ///
+        /// # Example
+        ///
+        /// ```
+        /// let a: i32 = to_num();
+        /// println!("{}", a); // Your input from the terminal
+        ///
+        /// ```
+        /// Uses the `user_input()` function from the `ru` module
         #[allow(dead_code)]
-        pub fn read_num() -> i32 {
+        pub fn to_num() -> i32 {
             let input: String = user_input();
             parse_to_num(input)
         }
 
+        /// Parse user input to a f32.
+        ///
+        /// # Example
+        ///
+        /// ```
+        /// let a: f32 = to_num();
+        /// println!("{}", a); // Your input from the terminal
+        ///
+        /// ```
+        /// Uses the `user_input()` function from the `ru` module
         #[allow(dead_code)]
-        pub fn read_float() -> f32 {
+        pub fn to_float() -> f32 {
             let input: String = user_input();
             parse_to_float(input)
         }
     }
 }
 
-pub use crate::io_fn::read_input;
-pub use crate::io_fn::numerize;
+pub use crate::io_fn::ru;
+pub use crate::io_fn::num;
 
 
 
