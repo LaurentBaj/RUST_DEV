@@ -19,11 +19,11 @@ mod io_fn {
         /// ```
         #[allow(dead_code)]
         pub fn user_input() -> String {
-            let mut input: String = String::new();
-            io::stdin()
+            let mut input = String::new();
+            std::io::stdin()
                 .read_line(&mut input)
-                .expect("Could not read user input");
-            input
+                .expect("Could not read input");
+            input.trim().to_string()
         }
     }
 
