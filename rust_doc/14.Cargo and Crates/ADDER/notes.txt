@@ -1,0 +1,9 @@
+A workspace is a set of packages that share the same Cargo.lock and output directory.
+This means that we can have multiple packages that depend on each other and even
+share common external libraries. WS's make it easier to handle larger projects.
+
+To create a workspace: mkdir an empty folder, then add a 'Cargo.toml' file.
+The file needs to be annotated with: [workspace].
+Libraries or binaries, that belong to the ws, need to be added as members in the toml.
+
+In this project: 'adder' is a bin that depends on the library 'add-one'.
