@@ -23,9 +23,7 @@ Cargo.lock
 # End of https://www.toptal.com/developers/gitignore/api/rust
 
 # Linux, C and C++
-Makefile
-qdirstat
-ui_*.h
-qrc_icons.cpp
-.obj
-.moc
+*.Makefile
+*.h
+*.o
+*.obj
