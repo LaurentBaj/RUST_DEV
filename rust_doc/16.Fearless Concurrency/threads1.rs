@@ -16,7 +16,7 @@ fn main() {
 }
 
 /*
-    Now we have to threads running independently.
+    Now we have two threads running independently.
     Because of how this program is written it will
     not allow the side thread to finish before program
     execution.

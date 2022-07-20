@@ -3,7 +3,7 @@ use std::thread;
 fn main() {
     let v = vec![1, 2, 3];
 
-    // take ownership of v
+    // take ownership of v with 'move'
     let handle = thread::spawn(move || {
         // v is no longer valid outside this block
         println!("Here's a vector: {:?}", v);
