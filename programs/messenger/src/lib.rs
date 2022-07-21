@@ -52,7 +52,7 @@ pub mod chat_utils {
 
 #[cfg(test)]
 mod tests {
-    use super::chat_utils::{ funs, model };
+    use super::chat_utils::{ model };
     use model::{ Message, Person };
 
     #[test]
