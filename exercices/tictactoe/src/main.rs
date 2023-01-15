@@ -15,18 +15,21 @@ fn main() {
 //// Read player input and mark a slot
 fn mark_slot(player: &str, slots: &mut [String; 9]) {
     println!("'{}'s turn\n", player);
-
-    // Read input, trim it and convert it to a string
-    let mut input = String::new();
-    io::stdin()
-        .read_line(&mut input)
-        .expect("Could not read input");
-    let input = input.trim().to_string();
+    let input = user_input();
     
     // Mark slot with 'X' or 'O'
     let input_num = input.parse::<usize>().unwrap() - 1;
     slots[input_num] = String::from(player);
     print_board(slots);
+}
+
+// Read input, trim it and convert it to a string
+fn user_input() -> String {
+    let mut input = String::new();
+    io::stdin()
+        .read_line(&mut input)
+        .expect("Could not read input");
+    input.trim().to_string()
 }
 
 fn print_board(array: &mut [String; 9]) {
